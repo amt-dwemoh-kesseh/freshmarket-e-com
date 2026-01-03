@@ -1,8 +1,39 @@
 # FreshMart E-commerce Services
 
+## 📦 Initial Setup
+
+**Before starting the services for the first time**, run the setup script to install all dependencies and pull Docker images:
+
+### Windows (Git Bash / MINGW)
+
+```bash
+# Make the script executable (first time only)
+chmod +x setup.sh
+
+# Run setup
+./setup.sh
+```
+
+### Linux/Mac
+
+```bash
+# Make the script executable (first time only)
+chmod +x setup.sh
+
+# Run setup
+./setup.sh
+```
+
+The setup script will:
+
+- ✅ Check prerequisites (Docker, Docker Compose, npm)
+- ✅ Pull Kafka Docker images
+- ✅ Install dependencies for all services (Auth, Inventory, Order, Payment, Emailing, Frontend)
+
 ## 🚀 Quick Start Scripts
 
 ### Windows (Git Bash / MINGW)
+
 ```bash
 # Start all services
 ./start-services.sh
@@ -12,6 +43,7 @@
 ```
 
 ### Windows (Command Prompt)
+
 ```cmd
 # Start all services
 start-all-services.bat
@@ -21,6 +53,7 @@ stop-all-services.bat
 ```
 
 ### Linux/Mac (Shell Scripts)
+
 ```bash
 # Make scripts executable (first time only)
 chmod +x start-all-services.sh
@@ -33,9 +66,10 @@ chmod +x stop-all-services.sh
 ./stop-all-services.sh
 ```
 
-##  Service Architecture
+## Service Architecture
 
 ### Startup Order
+
 1. **Event Broker Service** (Kafka) - Message queue
 2. **Auth Service** (Port 3005) - User authentication
 3. **Inventory Service** (Port 3003) - Product management
@@ -45,6 +79,7 @@ chmod +x stop-all-services.sh
 7. **Frontend** (Port 5174) - React application
 
 ### Service URLs
+
 - **Frontend**: http://localhost:5174
 - **Auth Service**: http://localhost:3005
 - **Inventory Service**: http://localhost:3003
@@ -53,7 +88,7 @@ chmod +x stop-all-services.sh
 - **Emailing Service**: http://localhost:3004
 - **Kafka UI**: http://localhost:8080
 
-##  Manual Startup (Alternative)
+## Manual Startup (Alternative)
 
 If you prefer to start services individually:
 
@@ -87,11 +122,12 @@ cd frontend
 npm run dev
 ```
 
-##  Testing the Image Upload Feature
+## Testing the Image Upload Feature
 
 ### Using Postman
 
 #### Test File Upload
+
 ```
 POST http://localhost:3003/admin/products
 Content-Type: multipart/form-data
@@ -105,6 +141,7 @@ Form Data:
 ```
 
 #### Test URL Upload
+
 ```
 POST http://localhost:3003/admin/products
 Content-Type: multipart/form-data
@@ -117,7 +154,7 @@ Form Data:
 - imageUrl: "https://example.com/image.jpg"
 ```
 
-##  Project Structure
+## Project Structure
 
 ```
 freshmart-ecommerce/
@@ -134,7 +171,7 @@ freshmart-ecommerce/
 └── stop-all-services.sh    # Linux/Mac shutdown script
 ```
 
-##  Environment Variables
+## Environment Variables
 
 Each service has its own `.env` file with required configuration:
 
@@ -144,24 +181,27 @@ Each service has its own `.env` file with required configuration:
 - **Cloudinary credentials** (Inventory Service)
 - **Email service credentials** (Emailing Service)
 
-##  Troubleshooting
+## Troubleshooting
 
 ### Services Won't Start
+
 1. Ensure all dependencies are installed: `npm install` in each service
 2. Check that ports are available (3001-3005, 5174, 8080)
 3. Verify Docker is running for Kafka
 4. Check `.env` files have correct values
 
 ### Database Connection Issues
+
 1. Ensure PostgreSQL is running
 2. Verify `DATABASE_URL` in each service's `.env`
 3. Run `npx prisma migrate dev` if needed
 
 ### Kafka Connection Issues
+
 1. Ensure Docker containers are running
 2. Check `KAFKA_BROKERS` in `.env` files
 3. Verify topic creation in Kafka logs
 
-##  Support
+## Support
 
 For issues with specific services, check the individual service README files or logs in the terminal windows.

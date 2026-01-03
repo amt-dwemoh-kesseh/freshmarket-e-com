@@ -33,7 +33,7 @@ chmod +x stop-all-services.sh
 ./stop-all-services.sh
 ```
 
-## 📋 Service Architecture
+##  Service Architecture
 
 ### Startup Order
 1. **Event Broker Service** (Kafka) - Message queue
@@ -53,7 +53,7 @@ chmod +x stop-all-services.sh
 - **Emailing Service**: http://localhost:3004
 - **Kafka UI**: http://localhost:8080
 
-## 🔧 Manual Startup (Alternative)
+##  Manual Startup (Alternative)
 
 If you prefer to start services individually:
 
@@ -87,7 +87,7 @@ cd frontend
 npm run dev
 ```
 
-## 🧪 Testing the Image Upload Feature
+##  Testing the Image Upload Feature
 
 ### Using Postman
 
@@ -117,7 +117,7 @@ Form Data:
 - imageUrl: "https://example.com/image.jpg"
 ```
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 freshmart-ecommerce/
@@ -134,7 +134,7 @@ freshmart-ecommerce/
 └── stop-all-services.sh    # Linux/Mac shutdown script
 ```
 
-## 🔑 Environment Variables
+##  Environment Variables
 
 Each service has its own `.env` file with required configuration:
 
@@ -144,7 +144,7 @@ Each service has its own `.env` file with required configuration:
 - **Cloudinary credentials** (Inventory Service)
 - **Email service credentials** (Emailing Service)
 
-## 🐛 Troubleshooting
+##  Troubleshooting
 
 ### Services Won't Start
 1. Ensure all dependencies are installed: `npm install` in each service
@@ -162,6 +162,6 @@ Each service has its own `.env` file with required configuration:
 2. Check `KAFKA_BROKERS` in `.env` files
 3. Verify topic creation in Kafka logs
 
-## 📞 Support
+##  Support
 
 For issues with specific services, check the individual service README files or logs in the terminal windows.
